@@ -27,24 +27,18 @@ file_available = load_files(st.session_state['local_save_path'])
 
 #MARK: Sidebar
 st.sidebar.markdown("# Filters")
-selected_category = st.sidebar.selectbox(label='Select cateogry',
-                                options = file_available.category.unique())
 session_type = st.sidebar.selectbox(label="Session type",
-                     options = file_available.loc[file_available.category == selected_category, 'type'].unique())
+                     options = file_available['type'].unique())
 session_date = st.sidebar.selectbox(label="Select session date (yyyy-mm-dd)",
-              options=file_available.loc[(file_available.category == selected_category) & (file_available.type == session_type), 'date'].unique())
+              options=file_available.loc[(file_available.type == session_type), 'date'].unique())
 
-if st.sidebar.button('Update data'):
-    load_files.clear()
-    load_stats.clear()
-    st.rerun()
 
 #MARK: Load the data
 session_data = load_stats(
     db_path=st.session_state['local_save_path'],
     dates = [session_date]*2,
     types= [session_type],
-    category=selected_category
+    category=''
 )
 
 metrics = load_metrics()

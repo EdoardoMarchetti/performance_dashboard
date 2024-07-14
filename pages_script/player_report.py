@@ -52,10 +52,7 @@ metrics_names = [m['name'] for m in metrics_dict]
 
 player = st.sidebar.selectbox(label='Select player', options = data.index.unique())
 
-if st.sidebar.button('Update data'):
-    load_files.clear()
-    load_stats.clear()
-    st.rerun()
+
 
 # #MARK: Overview
 selected_types = st.multiselect(label='Select session types',
