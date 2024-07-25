@@ -13,6 +13,6 @@ pages = {
 pg = st.navigation(pages)
 
 if not 'local_save_path' in st.session_state:
-    st.session_state['local_save_path'] = osp.join('data','gps_data.db')
+    st.session_state['local_save_path'] = osp.join('data','gps_data_new.db')
 
 pg.run()
