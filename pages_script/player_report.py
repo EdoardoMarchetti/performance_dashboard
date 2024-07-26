@@ -64,6 +64,8 @@ selected_metrics = st.multiselect(label='Select metrics',
         default = list(data.columns)[0])
 
 
+
+
 if len(selected_metrics) > 0:
     fig = create_bar_chart_overview(
         data=data,
